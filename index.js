@@ -1,20 +1,24 @@
 const express = require("express")
 const { GracefulShutdownServer } = require("medusa-core-utils")
+const cors = require("cors") // Adiciona o pacote cors
 
 const loaders = require("@medusajs/medusa/dist/loaders/index").default
 
-;(async() => {
+;(async () => {
   async function start() {
     const app = express()
     const directory = process.cwd()
 
+    // Habilita o CORS com configurações padrão (permitindo todas as origens)
+    app.use(cors())
+
     try {
       const { container } = await loaders({
         directory,
-        expressApp: app
+        expressApp: app,
       })
       const configModule = container.resolve("configModule")
-      const port = process.env.PORT ?? configModule.projectConfig.port ?? 9000
+      const port = process.env.PORT ?? configModule.projectConfig.port ?? 7001
 
       const server = GracefulShutdownServer.create(
         app.listen(port, (err) => {

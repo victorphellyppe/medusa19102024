@@ -79,7 +79,7 @@ jobs:
 
       - name: Kill server
         shell: "bash"
-        run: kill -9 $(lsof -t -i :9000)
+        run: kill -9 $(lsof -t -i :7001)
           
   test-cli-npm:
     name: "Test CLI (npm)"
@@ -145,7 +145,7 @@ jobs:
 
       - name: Kill server
         shell: "bash"
-        run: kill -9 $(lsof -t -i :9000)
+        run: kill -9 $(lsof -t -i :7001)
           
   test-cli-pnpm:
     name: "Test CLI (pnpm)"
@@ -218,5 +218,5 @@ jobs:
 
       - name: Kill server
         shell: "bash"
-        run: kill -9 $(lsof -t -i :9000)
+        run: kill -9 $(lsof -t -i :7001)
           
